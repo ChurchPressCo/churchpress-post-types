@@ -1,8 +1,8 @@
-# Community Pro Post Types
-The official custom post types for the Community Pro Genesis Child Theme by <a href="http://www.twitter.com/calvin_makes">Calvin Makes</a> and <a href="http:/www.twitter.com/avclark">Adam Clark</a>.
+# Churchpress Post Types
+The official custom post types for Churchpress Genesis Child Themes, originally developed as Community Pro Post Types <a href="http://www.twitter.com/calvin_makes">Calvin Makes</a> and <a href="http:/www.twitter.com/avclark">Adam Clark</a>. The plugin is now maintained and developed by the Churchpress team.
 
-### Release Notes (v1.1)
-Pull request to add better translation support and unify text-domains. **Please Note:** that if you already have custom taxonomies associated with this plugin, and you update, you may have to rebuild and assign your categories to their respective post types.
+### Release Notes (v1.2)
+Transition to Churchpress branding and prefixes throughout plugin. **Please Note:** that if you already have custom post types and taxonomies associated with this plugin, and you update, you may have to rebuild and assign your categories and their respective post types. This update is recommended for those not currently using the previous Community Pro Post Types plugin.
 
 
 ## Configuring Sermons

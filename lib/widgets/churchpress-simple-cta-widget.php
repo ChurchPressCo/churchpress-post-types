@@ -1,20 +1,20 @@
 <?php
 /**
- * A modified version of the Genesis Featured Page Widget for the Simple CTA Widget in Community Pro.
+ * A modified version of the Genesis Featured Page Widget for the Simple CTA Widget in Churchpress.
  *
  *
- * @package Community Pro Theme
+ * @package Churchpress Theme
  * @author  StudioPress, Calvin Makes
  */
 
 /**
- * Community Pro Simple CTA widget class.
+ * Churchpress Simple CTA widget class.
  *
  * @since 1.0
  *
- * @package Community Pro Theme
+ * @package Churchpress Theme
  */
-class Community_Pro_Simple_CTA_Widget extends WP_Widget {
+class Churchpress_Simple_CTA_Widget extends WP_Widget {
 
 	/**
 	 * Holds widget settings defaults, populated in constructor.
@@ -33,12 +33,12 @@ class Community_Pro_Simple_CTA_Widget extends WP_Widget {
 		$this->defaults = array(
 			'title'           => '',
 			'page_id'         => '',
-			'more_text'       => __( 'Learn More', 'community-pro-post-types' ),
+			'more_text'       => __( 'Learn More', 'churchpress-post-types' ),
 		);
 
 		$widget_ops = array(
 			'classname'   => 'featured-content simple-cta',
-			'description' => __( 'Displays simple CTA for footer widget area', 'community-pro-post-types' ),
+			'description' => __( 'Displays simple CTA for footer widget area', 'churchpress-post-types' ),
 		);
 
 		$control_ops = array(
@@ -47,7 +47,7 @@ class Community_Pro_Simple_CTA_Widget extends WP_Widget {
 			'height'  => 250,
 		);
 
-		parent::__construct( 'simple-cta-widget', __( 'CP - Simple CTA', 'community-pro-post-types' ), $widget_ops, $control_ops );
+		parent::__construct( 'simple-cta-widget', __( 'CP - Simple CTA', 'churchpress-post-types' ), $widget_ops, $control_ops );
 
 	}
 
@@ -132,19 +132,19 @@ class Community_Pro_Simple_CTA_Widget extends WP_Widget {
 
 		?>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title', 'community-pro-post-types' ); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title', 'churchpress-post-types' ); ?>:</label>
 			<input type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" class="widefat" />
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'page_id' ); ?>"><?php _e( 'Page', 'community-pro-post-types' ); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'page_id' ); ?>"><?php _e( 'Page', 'churchpress-post-types' ); ?>:</label>
 			<?php wp_dropdown_pages( array( 'name' => $this->get_field_name( 'page_id' ), 'selected' => $instance['page_id'] ) ); ?>
 		</p>
 
 		<hr class="div" />
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'more_text' ); ?>"><?php _e( 'More Text', 'community-pro-post-types' ); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'more_text' ); ?>"><?php _e( 'More Text', 'churchpress-post-types' ); ?>:</label>
 			<input type="text" id="<?php echo $this->get_field_id( 'more_text' ); ?>" name="<?php echo $this->get_field_name( 'more_text' ); ?>" value="<?php echo esc_attr( $instance['more_text'] ); ?>" />
 		</p>
 		<?php

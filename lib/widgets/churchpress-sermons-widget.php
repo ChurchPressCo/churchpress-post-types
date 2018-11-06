@@ -1,6 +1,6 @@
 <?php
 /**
- * Community Pro - Sermons Widget
+ * Churchpress - Sermons Widget
  *
  * @package Genesis
  * @author  StudioPress
@@ -18,7 +18,7 @@
 */
 
 
-class Community_Pro_Sermon_Widget extends WP_Widget {
+class Churchpress_Sermon_Widget extends WP_Widget {
 
 	/**
 	 * Holds widget settings defaults, populated in constructor.
@@ -36,7 +36,7 @@ class Community_Pro_Sermon_Widget extends WP_Widget {
 
 		$this->defaults = array(
 			'title'                   => '',
-			'post_type'               => 'community-pro-sermon',
+			'post_type'               => 'churchpress-sermon',
 			//'tax_term'                => '',
 			'posts_num'               => 1,
 			'posts_offset'            => 0,
@@ -49,24 +49,24 @@ class Community_Pro_Sermon_Widget extends WP_Widget {
 			'gravatar_size'           => '',
 			'show_title'              => 0,
 			'show_byline'             => 0,
-			'post_info'               => '[post_date] ' . __( 'By', 'community-pro-post-types' ) . ' [post_author_posts_link] [post_comments]',
+			'post_info'               => '[post_date] ' . __( 'By', 'churchpress-post-types' ) . ' [post_author_posts_link] [post_comments]',
 			'show_content'            => 'excerpt',
 			'content_limit'           => '',
-			'more_text'               => __( '[Read More...]', 'community-pro-post-types' )
+			'more_text'               => __( '[Read More...]', 'churchpress-post-types' )
 		);
 
 		$widget_ops = array(
 			'classname'   => 'sermon-widget',
-			'description' => __( 'Displays Community Pro Sermons', 'community-pro-post-types' ),
+			'description' => __( 'Displays Churchpress Sermons', 'churchpress-post-types' ),
 		);
 
 		$control_ops = array(
-			'id_base' => 'community-pro-sermon-widget',
+			'id_base' => 'churchpress-sermon-widget',
 			'width'   => 288,
 			'height'  => 350,
 		);
 
-		parent::__construct( 'community-pro-sermon-widget', __( 'CP - Sermons Widget', 'community-pro-post-types' ), $widget_ops, $control_ops );
+		parent::__construct( 'churchpress-sermon-widget', __( 'CP - Sermons Widget', 'churchpress-post-types' ), $widget_ops, $control_ops );
 
 		// Register our Ajax handler
 		add_action( 'wp_ajax_tax_term_action', array( $this, 'tax_term_action_callback' ) );
@@ -115,8 +115,8 @@ class Community_Pro_Sermon_Widget extends WP_Widget {
 			global $post;
 
 			//* Custom Meta Data
-			$sermon_speaker = get_post_meta( $post->ID, '_community_pro_speaker_field', true );
-			$sermon_date = date("d M", strtotime( get_post_meta( $post->ID, '_community_pro_sermon_date_field', true ) ) );
+			$sermon_speaker = get_post_meta( $post->ID, '_churchpress_speaker_field', true );
+			$sermon_date = date("d M", strtotime( get_post_meta( $post->ID, '_churchpress_sermon_date_field', true ) ) );
 
 			$_genesis_displayed_ids[] = get_the_ID();
 
@@ -202,7 +202,7 @@ class Community_Pro_Sermon_Widget extends WP_Widget {
 
 		?>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title', 'community-pro-post-types' ); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title', 'churchpress-post-types' ); ?>:</label>
 			<input type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" class="widefat" />
 		</p>
 
@@ -210,40 +210,40 @@ class Community_Pro_Sermon_Widget extends WP_Widget {
 
 			<p>
 				<input id="<?php echo $this->get_field_id( 'show_title' ); ?>" type="checkbox" name="<?php echo $this->get_field_name( 'show_title' ); ?>" value="1" <?php checked( $instance['show_title'] ); ?>/>
-				<label for="<?php echo $this->get_field_id( 'show_title' ); ?>"><?php _e( 'Show Sermon Title', 'community-pro-post-types' ); ?></label>
+				<label for="<?php echo $this->get_field_id( 'show_title' ); ?>"><?php _e( 'Show Sermon Title', 'churchpress-post-types' ); ?></label>
 			</p>
 
 			<p>
-				<label for="<?php echo $this->get_field_id( 'posts_num' ); ?>"><?php _e( 'Number of Sermons to Show', 'community-pro-post-types' ); ?>:</label>
+				<label for="<?php echo $this->get_field_id( 'posts_num' ); ?>"><?php _e( 'Number of Sermons to Show', 'churchpress-post-types' ); ?>:</label>
 				<input type="text" id="<?php echo $this->get_field_id( 'posts_num' ); ?>" name="<?php echo $this->get_field_name( 'posts_num' ); ?>" value="<?php echo esc_attr( $instance['posts_num'] ); ?>" size="2" />
 			</p>
 
 			<p>
-				<label for="<?php echo $this->get_field_id( 'posts_offset' ); ?>"><?php _e( 'Number of Sermons to Offset', 'community-pro-post-types' ); ?>:</label>
+				<label for="<?php echo $this->get_field_id( 'posts_offset' ); ?>"><?php _e( 'Number of Sermons to Offset', 'churchpress-post-types' ); ?>:</label>
 				<input type="text" id="<?php echo $this->get_field_id( 'posts_offset' ); ?>" name="<?php echo $this->get_field_name( 'posts_offset' ); ?>" value="<?php echo esc_attr( $instance['posts_offset'] ); ?>" size="2" />
 			</p>
 
 			<p>
-				<label for="<?php echo $this->get_field_id( 'orderby' ); ?>"><?php _e( 'Order By', 'community-pro-post-types' ); ?>:</label>
+				<label for="<?php echo $this->get_field_id( 'orderby' ); ?>"><?php _e( 'Order By', 'churchpress-post-types' ); ?>:</label>
 				<select id="<?php echo $this->get_field_id( 'orderby' ); ?>" name="<?php echo $this->get_field_name( 'orderby' ); ?>">
-					<option value="date" <?php selected( 'date', $instance['orderby'] ); ?>><?php _e( 'Date', 'community-pro-post-types' ); ?></option>
-					<option value="title" <?php selected( 'title', $instance['orderby'] ); ?>><?php _e( 'Title', 'community-pro-post-types' ); ?></option>
-					<option value="ID" <?php selected( 'ID', $instance['orderby'] ); ?>><?php _e( 'ID', 'community-pro-post-types' ); ?></option>
-					<option value="rand" <?php selected( 'rand', $instance['orderby'] ); ?>><?php _e( 'Random', 'community-pro-post-types' ); ?></option>
+					<option value="date" <?php selected( 'date', $instance['orderby'] ); ?>><?php _e( 'Date', 'churchpress-post-types' ); ?></option>
+					<option value="title" <?php selected( 'title', $instance['orderby'] ); ?>><?php _e( 'Title', 'churchpress-post-types' ); ?></option>
+					<option value="ID" <?php selected( 'ID', $instance['orderby'] ); ?>><?php _e( 'ID', 'churchpress-post-types' ); ?></option>
+					<option value="rand" <?php selected( 'rand', $instance['orderby'] ); ?>><?php _e( 'Random', 'churchpress-post-types' ); ?></option>
 				</select>
 			</p>
 
 			<p>
-				<label for="<?php echo $this->get_field_id( 'order' ); ?>"><?php _e( 'Sort Order', 'community-pro-post-types' ); ?>:</label>
+				<label for="<?php echo $this->get_field_id( 'order' ); ?>"><?php _e( 'Sort Order', 'churchpress-post-types' ); ?>:</label>
 				<select id="<?php echo $this->get_field_id( 'order' ); ?>" name="<?php echo $this->get_field_name( 'order' ); ?>">
-					<option value="DESC" <?php selected( 'DESC', $instance['order'] ); ?>><?php _e( 'Descending (3, 2, 1)', 'community-pro-post-types' ); ?></option>
-					<option value="ASC" <?php selected( 'ASC', $instance['order'] ); ?>><?php _e( 'Ascending (1, 2, 3)', 'community-pro-post-types' ); ?></option>
+					<option value="DESC" <?php selected( 'DESC', $instance['order'] ); ?>><?php _e( 'Descending (3, 2, 1)', 'churchpress-post-types' ); ?></option>
+					<option value="ASC" <?php selected( 'ASC', $instance['order'] ); ?>><?php _e( 'Ascending (1, 2, 3)', 'churchpress-post-types' ); ?></option>
 				</select>
 			</p>
 
 			<p>
 				<input id="<?php echo $this->get_field_id( 'exclude_displayed' ); ?>" type="checkbox" name="<?php echo $this->get_field_name( 'exclude_displayed' ); ?>" value="1" <?php checked( $instance['exclude_displayed'] ); ?>/>
-				<label for="<?php echo $this->get_field_id( 'exclude_displayed' ); ?>"><?php _e( 'Exclude Previously Displayed Sermons?', 'community-pro-post-types' ); ?></label>
+				<label for="<?php echo $this->get_field_id( 'exclude_displayed' ); ?>"><?php _e( 'Exclude Previously Displayed Sermons?', 'churchpress-post-types' ); ?></label>
 			</p>
 
 		</div>
