@@ -1,0 +1,14 @@
+/* Strip container styling for staff subtitle metabox */
+#churchpress_staff_subtitle.postbox {
+  background: none;
+  border: 0;
+  box-shadow: none;
+}
+
+#churchpress_staff_subtitle.postbox .handlediv {
+  display: none;
+}
+
+#churchpress_staff_subtitle.postbox .ui-sortable-handle {
+  border: 0;
+}

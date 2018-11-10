@@ -14,6 +14,7 @@
 
 defined('ABSPATH') or die("No script kiddies please!");
 
+define( 'PLUGIN_VERSION', '1.2' );
 
 add_action( 'plugins_loaded', 'churchpress_load_translations' );
 /**
@@ -71,17 +72,33 @@ add_action( 'genesis_setup', 'churchpress_sermon_taxonomies' );
 
 //* Churchpress Sermons
 add_action( 'genesis_setup', 'churchpress_sermons' );
-add_action( 'admin_init', 'churchpress_sermons_meta_admin' );
-add_action( 'init', 'churchpress_remove_subtitles_support' );
+add_action( 'admin_init', 'churchpress_sermons_meta_admin', 12 );
+// add_action( 'init', 'churchpress_remove_subtitles_support' );
 function churchpress_remove_subtitles_support() {
   remove_post_type_support( 'churchpress-sermons', 'subtitles' );
 }
 
 //* Churchpress Staff
 add_action( 'genesis_setup', 'churchpress_staff' );
-add_action( 'init', 'churchpress_add_subtitles_support' );
+add_action( 'admin_init', 'churchpress_staff_meta_admin', 12 );
+// add_action( 'init', 'churchpress_add_subtitles_support' );
 function churchpress_add_subtitles_support() {
     add_post_type_support( 'churchpress-staff', 'subtitles' );
+}
+
+add_action( 'admin_print_styles-post-new.php', 'churchpress_staff_admin_styles', 11 );
+add_action( 'admin_print_styles-post.php', 'churchpress_staff_admin_styles', 11 );
+/**
+ * Enqueues stylesheet for staff post type metabox
+ *
+ * @since 1.2
+ */
+function churchpress_staff_admin_styles() {
+  global $post;
+
+  if ( 'churchpress-staff' == $post->post_type ) {
+    wp_enqueue_style( 'churchpress-staff-style', plugin_dir_url( __FILE__ ) . '/assets/css/staff-meta.css', array(), PLUGIN_VERSION, '' );
+  }
 }
 
 
